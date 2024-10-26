@@ -109,7 +109,7 @@ def main():
     logger.info("Test data loaded.")
 
     # Load vectorizer
-    vectorizer = torch.load('model/vectorizer.pth')
+    vectorizer = torch.load('./src/model/vectorizer.pth')
     logger.info("Vectorizer loaded.")
 
     # Prepare graph data for inference
@@ -117,7 +117,8 @@ def main():
 
     # Load model
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    model = load_model('model/best_model.pth', data.metadata(), device)
+    model = load_model('./src/model/
+                       ', data.metadata(), device)
 
     # Generate recommendations
     recommendations = recommend_units(test_df, model, data, author_id_map, list(unit_id_map.keys()), top_n=10)

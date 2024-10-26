@@ -210,7 +210,7 @@ def hyperparameter_tuning(train_df, test_df, param_grid, data):
     best_metrics = None
     best_params = None
     all_results = []
-    best_model_path = "model/best_model.pth"  # Path to save the best model
+    best_model_path = "./src/model/best_model.pth"  # Path to save the best model
 
     for params in ParameterGrid(param_grid):
         logger.info(f"Evaluating with parameters: {params}")
@@ -263,7 +263,7 @@ def hyperparameter_tuning(train_df, test_df, param_grid, data):
             logger.info(f"Epoch {epoch+1}, Loss: {avg_loss:.4f}")
 
             # Save current model after each epoch
-            torch.save(model.state_dict(), 'model/tmp.pth')
+            torch.save(model.state_dict(), './src/model/tmp.pth')
             logger.info(f"Temporary model saved as tmp.pth at epoch {epoch+1}")
 
         # Evaluate after training
@@ -285,11 +285,11 @@ def hyperparameter_tuning(train_df, test_df, param_grid, data):
 
 # Define the parameter grid for hyperparameter tuning
 param_grid = {
-    'learning_rate': [0.001, 0.005, 0.01],
-    'num_epochs': [10, 20],
+    'learning_rate': [0.0001],
+    'num_epochs': [100],
     'hidden_dim': [32, 64, 128],
-    'dropout': [0.1, 0.3, 0.5],
-    'batch_size': [512, 1024]  # Include different batch sizes here
+    'dropout': [0.1],
+    'batch_size': [512]  # Include different batch sizes here
 }
 
 
@@ -310,7 +310,7 @@ test_embeddings = vectorizer.transform(test_df['abstract'].fillna(''))
 logger.info("Embeddings generated.")
 
 # Save the vectorizer after fitting it
-joblib.dump(vectorizer, 'model/vectorizer.pth')
+joblib.dump(vectorizer, './src/model/vectorizer.pth')
 logger.info("Vectorizer saved as vectorizer.pth")
 
 # Initialize the graph data (data) after loading train and test datasets

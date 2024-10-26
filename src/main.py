@@ -21,7 +21,7 @@ logger = setup_logging()
 def run_rec_gnn():
     try:
         logger.info("Starting training with rec_gnn.py...")
-        subprocess.run(["python", "rec_gnn.py"], check=True)
+        subprocess.run(["python", "./src/rec_gnn.py"], check=True)
         logger.info("Training completed successfully.")
     except subprocess.CalledProcessError as e:
         logger.error(f"Error occurred while running rec_gnn.py: {e}")
@@ -31,7 +31,7 @@ def run_rec_gnn():
 def run_rec_inference():
     try:
         logger.info("Starting inference with rec_inference.py...")
-        subprocess.run(["python", "rec_inference.py"], check=True)
+        subprocess.run(["python", "./src/rec_inference.py"], check=True)
         logger.info("Inference completed successfully.")
     except subprocess.CalledProcessError as e:
         logger.error(f"Error occurred while running rec_inference.py: {e}")
