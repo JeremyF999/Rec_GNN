@@ -1,3 +1,4 @@
+# math_CB.py
 import random
 import pandas as pd
 import math
@@ -15,11 +16,11 @@ import numpy as np
 import json
 #导入数据训练数据和测试数据
 def load_trainset():
-    trainpaper_df = pd.read_csv("D:/论文工作/job recommendation/recommendation task1/data/math_data/训练集.csv", low_memory=False)
+    trainpaper_df = pd.read_csv("train.csv", low_memory=False)
     for i, row in trainpaper_df.iterrows():
         yield row  #yield函数可以减少内存消耗，不知道好用不，试试看
 def load_testset():
-    testpaper_df = pd.read_csv("D:/论文工作/job recommendation/recommendation task1/data/math_data/测试集.csv", low_memory=False)
+    testpaper_df = pd.read_csv("test.csv", low_memory=False)
     for i,row in testpaper_df.iterrows():
         yield row
 
